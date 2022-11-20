@@ -38,12 +38,12 @@ namespace War_Game
                     break;
             }
 
-            ConsoleApp.PrintAnimation("Insert nick name Player 1: ", 70);  // (C-APK)
-            ConsoleApp.PrintAnimation("(no more than 12 characters)", 70);  // (C-APK)
+            ConsoleApp.PrintAnimation("Insert nick name Player 1: ", 40);  // (C-APK)
+            ConsoleApp.PrintAnimation("(no more than 12 characters)", 40);  // (C-APK)
             string nickNamePlayer1 = Console.ReadLine();           //Console APK (C-APK)
 
-            ConsoleApp.PrintAnimation("Insert nick name Player 2: ", 70);  // (C-APK)
-            ConsoleApp.PrintAnimation("(no more than 12 characters)", 70);  // (C-APK)
+            ConsoleApp.PrintAnimation("Insert nick name Player 2: ", 40);  // (C-APK)
+            ConsoleApp.PrintAnimation("(no more than 12 characters)", 40);  // (C-APK)
             string nickNamePlayer2 = Console.ReadLine();           //Console APK (C-APK)
 
             //ConsoleApp.Loading();
