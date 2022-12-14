@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using System.Media;
+
 
 namespace War_Game
 {
@@ -9,24 +11,258 @@ namespace War_Game
         {
             string prompt = @"
 
- .------..------..------.     .------..------..------..------.
- |W.--. ||A.--. ||R.--. |.-.  |G.--. ||A.--. ||M.--. ||E.--. |
- | :/\: || (\/) || :(): ((5)) | :/\: || (\/) || (\/) || (\/) |
- | :\/: || :\/: || ()() |'-.-.| :\/: || :\/: || :\/: || :\/: |
- | '--'W|| '--'A|| '--'R| ((1)) '--'G|| '--'A|| '--'M|| '--'E|
- `------'`------'`------'  '-'`------'`------'`------'`------'
+      ██████╗  ██████╗ ██████╗       ███████╗    ███████╗███╗   ██╗ █████╗ ██████╗ 
+     ██╔════╝ ██╔═══██╗██╔══██╗      ██╔════╝    ██╔════╝████╗  ██║██╔══██╗██╔══██╗
+     ██║  ███╗██║   ██║██║  ██║█████╗███████╗    ███████╗██╔██╗ ██║███████║██████╔╝
+     ██║   ██║██║   ██║██║  ██║╚════╝╚════██║    ╚════██║██║╚██╗██║██╔══██║██╔═══╝ 
+     ╚██████╔╝╚██████╔╝██████╔╝      ███████║    ███████║██║ ╚████║██║  ██║██║     
+      ╚═════╝  ╚═════╝ ╚═════╝       ╚══════╝    ╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝     
+                                                                                   
  
+                                                                       
+  
  Welcome to War Game! What would you like to do?
 (Use the arrow keys to cycle through the options and press enter to select an option.)";
 
-            string[] options = {"Play", "About", "Exit"};
+            string[] options = { "Play", "About", "Exit" };
             Menu mainManu = new Menu(prompt, options);
             int selectedIndex = mainManu.Run();
 
-            switch(selectedIndex)
+            switch (selectedIndex)
             {
                 case 0:
-                    //play
+                    string newPrompt = "How would u like to play?";
+                    string[] playOptions = { "Player vs Player", "Play vs Bot (development)" };
+                    Menu playManu = new Menu(newPrompt, playOptions);
+                    int selectedPlayIndex = playManu.Run();
+
+                    switch (selectedPlayIndex)
+                    {
+                        case 0:
+                            Console.Clear();
+
+                            ConsoleApp.PrintAnimation("Insert nick name Player 1: ", 0);  // (C-APK)
+                            ConsoleApp.PrintAnimation("(no more than 12 characters)", 0);  // (C-APK)
+                            string nickNamePlayer1 = Console.ReadLine();           //Console APK (C-APK)
+                            Deck P1Deck = new Deck();
+
+                            Console.Clear();
+
+                            string newPromptDeck = @"Choose the cards that you want to play with: 
+(press enter to add a card)
+(you cannot add the same card twice)";
+                            string[] cards = { "Zeus", "Hermes", "Hera", "Apolo", "Poseidon", "Artemisa", "Afrodita", "Hefesto", "Ares", "Demeter", "Atenea", "Hestia", "Dioniso", "Hades", "Raijin", "Amaterasu", "Tsuki-Yomi", "Susanoo", "Fujin", "Rayujin", "Tenjin", "Hachiman", "Inari", "Omoikane", "Saruta-Hiko", "Kagutsuchi" };
+
+                            Effect Elefecto = new Effect();
+                            Card Zeus = new Card("Zeus", 5, 9, Elefecto);
+                            Card Hermes = new Card("Hermes", 1, 2, Elefecto);
+                            Card Hera = new Card("Hera", 3, 4, Elefecto);
+                            Card Apolo = new Card("Apolo", 2, 2, Elefecto);
+                            Card Poseidon = new Card("Poseidon", 4, 6, Elefecto);
+                            Card Artemisa = new Card("Artemisa", 1, 1, Elefecto);
+                            Card Afrodita = new Card("Afrodita", 3, 3, Elefecto);
+                            Card Hefesto = new Card("Hefesto", 4, 5, Elefecto);
+                            Card Ares = new Card("Ares", 6, 12, Elefecto);
+                            Card Demeter = new Card("Demeter", 2, 3, Elefecto);
+                            Card Atenea = new Card("Atenea", 4, 5, Elefecto);
+                            Card Hestia = new Card("Hestia", 3, 3, Elefecto);
+                            Card Dioniso = new Card("Dioniso", 1, 1, Elefecto);
+                            Card Hades = new Card("Hades", 6, 10, Elefecto);
+
+                            Menu deckMenu = new Menu(newPromptDeck, cards);
+                            int deckMenuIndex = deckMenu.Run();
+
+                            while (P1Deck.cards.Count() < (12 + 1))
+                            {
+                                deckMenuIndex = deckMenu.Run();
+
+                                switch (deckMenuIndex)
+                                {
+                                    case 0:
+                                        P1Deck.cards.Add(Zeus);
+                                        break;
+
+                                    case 1:
+                                        P1Deck.cards.Add(Hermes);
+                                        break;
+
+                                    case 2:
+                                        P1Deck.cards.Add(Hera);
+                                        break;
+
+                                    case 3:
+                                        P1Deck.cards.Add(Apolo);
+                                        break;
+
+                                    case 4:
+                                        P1Deck.cards.Add(Poseidon);
+                                        break;
+
+                                    case 5:
+                                        P1Deck.cards.Add(Artemisa);
+                                        break;
+
+                                    case 6:
+                                        P1Deck.cards.Add(Afrodita);
+                                        break;
+
+                                    case 7:
+                                        P1Deck.cards.Add(Hefesto);
+                                        break;
+
+                                    case 8:
+                                        P1Deck.cards.Add(Ares);
+                                        break;
+
+                                    case 9:
+                                        P1Deck.cards.Add(Demeter);
+                                        break;
+
+                                    case 10:
+                                        P1Deck.cards.Add(Atenea);
+                                        break;
+
+                                    case 11:
+                                        P1Deck.cards.Add(Hestia);
+                                        break;
+
+                                    case 12:
+                                        P1Deck.cards.Add(Dioniso);
+                                        break;
+
+                                    case 13:
+                                        P1Deck.cards.Add(Hades);
+                                        break;
+                                }
+                            }
+
+                            Player P1 = new Player(nickNamePlayer1, P1Deck);
+                            Console.Clear();
+
+                            ConsoleApp.PrintAnimation("Insert nick name Player 2: ", 0);  // (C-APK)
+                            ConsoleApp.PrintAnimation("(no more than 12 characters)", 0);  // (C-APK)
+                            string nickNamePlayer2 = Console.ReadLine();           //Console APK (C-APK)
+
+                            Deck P2Deck = new Deck();
+
+                            Console.Clear();
+
+                            deckMenuIndex = deckMenu.Run();
+
+                            while (P2Deck.cards.Count() < (12 + 1))
+                            {
+                                deckMenuIndex = deckMenu.Run();
+                                switch (deckMenuIndex)
+                                {
+                                    case 0:
+                                        P2Deck.cards.Add(Zeus);
+                                        break;
+
+                                    case 1:
+                                        P2Deck.cards.Add(Hermes);
+                                        break;
+
+                                    case 2:
+                                        P2Deck.cards.Add(Hera);
+                                        break;
+
+                                    case 3:
+                                        P2Deck.cards.Add(Apolo);
+                                        break;
+
+                                    case 4:
+                                        P2Deck.cards.Add(Poseidon);
+                                        break;
+
+                                    case 5:
+                                        P2Deck.cards.Add(Artemisa);
+                                        break;
+
+                                    case 6:
+                                        P2Deck.cards.Add(Afrodita);
+                                        break;
+
+                                    case 7:
+                                        P2Deck.cards.Add(Hefesto);
+                                        break;
+
+                                    case 8:
+                                        P2Deck.cards.Add(Ares);
+                                        break;
+
+                                    case 9:
+                                        P2Deck.cards.Add(Demeter);
+                                        break;
+
+                                    case 10:
+                                        P2Deck.cards.Add(Atenea);
+                                        break;
+
+                                    case 11:
+                                        P2Deck.cards.Add(Hestia);
+                                        break;
+
+                                    case 12:
+                                        P2Deck.cards.Add(Dioniso);
+                                        break;
+
+                                    case 13:
+                                        P2Deck.cards.Add(Hades);
+                                        break;
+                                }
+                            }
+                            Player P2 = new Player(nickNamePlayer2, P2Deck);
+
+                            int turn = 1;
+                            string cont1nue = "";
+
+                            while (turn <= 6)
+                            {
+                                Console.Clear();
+                                ConsoleApp.PrintBoard(P1, P2);
+                                Console.WriteLine();
+                                Console.WriteLine();
+                                Console.WriteLine("Write something to continue: ");
+                                cont1nue = Console.ReadLine();
+                                Console.Clear();
+
+                                while (!P1.EndTurn)
+                                {
+                                    ConsoleApp.ItsYourTurn(P1);
+                                    P1.DrawACard();
+                                }
+                                while (!P2.EndTurn)
+                                {
+                                    ConsoleApp.ItsYourTurn(P2);
+                                    P2.DrawACard();
+                                }
+
+                                P1.EndTurn = false;
+                                P2.EndTurn = false;
+
+
+                                turn++;
+                            }
+
+                            Console.Clear();
+                            Console.WriteLine(@"
+
+     ██╗    ██╗██╗███╗   ██╗███╗   ██╗███████╗██████╗ 
+     ██║    ██║██║████╗  ██║████╗  ██║██╔════╝██╔══██╗
+     ██║ █╗ ██║██║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝
+     ██║███╗██║██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗
+     ╚███╔███╔╝██║██║ ╚████║██║ ╚████║███████╗██║  ██║
+      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
+                                                      
+ 
+");
+                            Console.WriteLine(WhoWon(P1, P2));
+                            break;
+
+                        case 1:
+                            //Play vs bot
+                            break;
+                    }
                     break;
 
                 case 1:
@@ -38,83 +274,19 @@ namespace War_Game
                     break;
             }
 
-            ConsoleApp.PrintAnimation("Insert nick name Player 1: ", 40);  // (C-APK)
-            ConsoleApp.PrintAnimation("(no more than 12 characters)", 40);  // (C-APK)
-            string nickNamePlayer1 = Console.ReadLine();           //Console APK (C-APK)
 
-            ConsoleApp.PrintAnimation("Insert nick name Player 2: ", 40);  // (C-APK)
-            ConsoleApp.PrintAnimation("(no more than 12 characters)", 40);  // (C-APK)
-            string nickNamePlayer2 = Console.ReadLine();           //Console APK (C-APK)
 
             //ConsoleApp.Loading();
 
-            #region Deck Creation
 
-            Effect effect = new Effect();
-            Deck deck1 = new Deck();
-            Card card1 = new Card("Hermes", 1, 2, effect);
-            deck1.cards.Add(card1);
-            Card card2 = new Card("Hera", 3, 4, effect);
-            deck1.cards.Add(card2);
-            Card card3 = new Card("Hercules", 3, 5, effect);
-            deck1.cards.Add(card3);
-            Card card4 = new Card("Demeter", 2, 3, effect);
-            deck1.cards.Add(card4);
-            Card card5 = new Card("Afrodita", 1, 3, effect);
-            deck1.cards.Add(card5);
-            Card card6 = new Card("Apolo", 2, 3, effect);
-            deck1.cards.Add(card6);
-            Card card7 = new Card("Medusa", 4, 6, effect);
-            deck1.cards.Add(card7);
-            Card card8 = new Card("Poseidon", 3, 5, effect);
-            deck1.cards.Add(card8);
-            Card card9 = new Card("Hefesto", 4, 6, effect);
-            deck1.cards.Add(card9);
-            Card card10 = new Card("Atenea", 5, 9, effect);
-            deck1.cards.Add(card10);
-            Card card11 = new Card("Zeus", 6, 12, effect);
-            deck1.cards.Add(card11);
-            Card card12 = new Card("Ares!", 6, 12, effect);
-            deck1.cards.Add(card12);
-            #endregion          
+            // deck3 = (Deck)deck1.Clone();
+            //deck1.cards = Deck.Shuffled(deck1.cards);
+            //Player P1 = new Player(nickNamePlayer1, deck1);
 
-            Random rand = new Random();
-            var shuffled = deck1.cards.OrderBy(_ => rand.Next()).ToList();
-            Player P1 = new Player(nickNamePlayer1, deck1);
+            //  deck2.cards = Deck.Shuffled(deck2.cards);
+            //  Player P2 = new Player(nickNamePlayer2, deck3);
 
-            shuffled = deck1.cards.OrderBy(_ => rand.Next()).ToList();
-            Player P2 = new Player(nickNamePlayer2, deck1);
 
-            int turn = 1;
-            string cont1nue = "";
-
-            while (turn <= 6)
-            {
-                Console.Clear();
-                ConsoleApp.PrintBoard(P1, P2);
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("Write something to continue: ");
-                cont1nue = Console.ReadLine();
-                Console.Clear();
-
-                while (!P1.EndTurn)
-                {
-                    ConsoleApp.ItsYourTurn(P1);
-                }
-                while (!P2.EndTurn)
-                {
-                    ConsoleApp.ItsYourTurn(P2);
-                }
-
-                P1.EndTurn = false;
-                P2.EndTurn = false;
-
-                turn++;
-            }
-
-            Console.Clear();
-            Console.WriteLine(WhoWon(P1, P2));
 
             void PlayACard(Player player, Card cardPlayed, int indexTerrain)
             {
